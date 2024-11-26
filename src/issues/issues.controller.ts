@@ -2,7 +2,7 @@ import {
   Controller, Get, Param, Query, Req,
 } from '@nestjs/common';
 import { LogService } from '../log/log.service';
-import { IssuesService } from './issues.service';
+import { Issue, IssuesService } from './issues.service';
 
 @Controller('issues')
 export class IssuesController {
@@ -17,7 +17,7 @@ export class IssuesController {
     repo?: string;
     limit?: number;
     offset?: number;
-  }, @Req() req) {
+  }, @Req() req): Promise<Issue[]> {
     const {
       user, repo, limit, offset,
     } = query;
@@ -37,7 +37,7 @@ export class IssuesController {
     },
     @Param('number') number: number,
     @Req() req,
-  ) {
+  ): Promise<Issue> {
     const { user, repo } = query;
     const result = await this.measureAndLog(
       'get_one_issue',
@@ -47,10 +47,10 @@ export class IssuesController {
     return result;
   }
 
-  private async measureAndLog(
+  private async measureAndLog<T>(
     requestType: string,
     ipAddress: string,
-    operation: () => Promise<any>,
+    operation: () => Promise<T>,
   ) {
     const startTime = Date.now();
     const result = await operation();
