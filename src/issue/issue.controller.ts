@@ -2,7 +2,7 @@ import {
   Controller, Get, Param, Query, Req,
 } from '@nestjs/common';
 import { LogService } from '../log/log.service';
-import { Issue, IssuesService } from './issues.service';
+import { Issue, IssuesService } from './issue.service';
 
 @Controller('issues')
 export class IssuesController {

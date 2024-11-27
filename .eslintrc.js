@@ -21,6 +21,13 @@ module.exports = {
     'max-len': ['error', { code: 120 }],
     'no-useless-constructor': 'off',
     'import/extensions': 'off',
+    semi: ['error', 'always'],
+    'no-unused-vars': [
+      'error',
+      {
+        args: 'none',
+      },
+    ],
   },
   settings: {
     'import/resolver': {

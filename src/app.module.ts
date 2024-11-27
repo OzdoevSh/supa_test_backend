@@ -4,8 +4,8 @@ import { HttpModule } from '@nestjs/axios';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
-import { IssuesController } from './issues/issues.controller';
-import { IssuesService } from './issues/issues.service';
+import { IssuesController } from './issue/issue.controller';
+import { IssuesService } from './issue/issue.service';
 import { LogModule } from './log/log.module';
 import { LogController } from './log/log.controller';
 
